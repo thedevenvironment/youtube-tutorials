@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-type Props = {
+interface Props {
   result: string[]
 }
 
@@ -25,13 +25,13 @@ const S = {
     }
   `,
   Element: styled.div`
+    height: 100px;
+    background-color: #0f5135;
+    aspect-ratio: 1;
+    color: #fff;
     font-size: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
-    aspect-ratio: 1;
-    height: 100px;
-    background-color: #0f5135;
-    color: #fff;
   `
 }

@@ -2,29 +2,31 @@ import { useEffect, useState } from 'react'
 import BreakingLogo from './BreakingLogo'
 import breakify from '../helpers/breakify'
 
+// BREAKING
+
 function App() {
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
-  const [firstResult, setFirstResult] = useState(['', '', ''])
-  const [secondResult, setSecondResult] = useState(['', '', ''])
+  const [first, setFirst] = useState(['', '', ''])
+  const [last, setLast] = useState(['', '', ''])
 
   useEffect(() => {
-    setFirstResult(breakify(firstName))
+    setFirst(breakify(firstName))
   }, [firstName])
 
   useEffect(() => {
-    setSecondResult(breakify(lastName))
+    setLast(breakify(lastName))
   }, [lastName])
 
   return (
     <div className='app'>
       <div className='content'>
-        <BreakingLogo result={firstResult} />
-        <BreakingLogo result={secondResult} />
+        <BreakingLogo result={first} />
+        <BreakingLogo result={last} />
         <div className='row'>
           <div className='col'>
             <label>First Name</label>
-            <input id='firstname' onChange={(e) => setFirstName(e.target.value)} value={firstName} />
+            <input onChange={(e) => setFirstName(e.target.value)} value={firstName} />
           </div>
           <div className='col'>
             <label>Last Name</label>
