@@ -15,4 +15,4 @@ Rules:
 
 6. At the end of the game, allow the user to see how many words per minute they can type. 
 
-7. We've already created the start and results page, just fill in the logic for the typing test and how to get the result. 
+7. You have 20 minutes.
