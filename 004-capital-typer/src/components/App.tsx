@@ -1,69 +1,54 @@
+import { useState } from 'react'
 import styled from 'styled-components'
-import { useEffect, useState } from 'react'
-import getRandomWord from '../helpers/getRandomWord'
 
 export default function App() {
-  const [word, setWord] = useState(getRandomWord().split(''))
-  const [text, setText] = useState<string[]>([])
+  const [stage, setStage] = useState<'start' | 'test' | 'result'>('start')
 
-  useEffect(() => {
-    if (text.length === word.length) {
-      setTimeout(() => Promise.all([setWord(getRandomWord().split('')), setText([])]), 500)
-    }
-  }, [text, word])
+  if (stage === 'start') {
+    return (
+      <S.Wrapper>
+        <S.Button onClick={() => setStage('test')}>Start</S.Button>
+      </S.Wrapper>
+    )
+  }
 
-  useEffect(() => {
-    const keyHandler = ({ key }: { key: string }) => {
-      setText((currText) => key === word[currText.length] ? [...currText, key] : currText)
-    }
-    window.addEventListener('keydown', keyHandler)
-    return () => window.removeEventListener('keydown', keyHandler)
-  }, [word])
-
-  return (
-    <S.Page>
-      <S.Word key={word.join('')}>
-        {word.map((letter, i) => (
-          <S.Letter highlight={(i < text.length).toString()} key={`${letter}-${i}`}>
-            {letter}
-          </S.Letter>
-        ))}
-      </S.Word>
-    </S.Page>
+  //
+  // Write Code Here
+  //
+  if (stage === 'test') return ( 
+    <S.Wrapper></S.Wrapper>
   )
+
+  if (stage === 'result') {
+    return (
+      <S.Wrapper>
+        <S.Paragraph>{`Score: ${20}`}</S.Paragraph>
+      </S.Wrapper>
+    )
+  }
 }
 
 const S = {
-  Page: styled.div`
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    background-color: #736b92;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: stretch;
-  `,
-  Word: styled.div`
-    animation: 1s bounceIn;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+  Wrapper: styled.div`
     flex: 1;
-    width: 100%;
-    background-color: #736b92;
-  `,
-  Letter: styled.span<{ highlight: string }>`
+    background-color: #222;
     display: flex;
-    border: 1px solid transparent;
-    width: 50px;
-    height: 80px;
     align-items: center;
     justify-content: center;
-    font-size: 50px;
-    font-family: helvetica;
-    color: #9593d9;
-    letter-spacing: 2px;
-    background-color: ${(p) => (p.highlight === 'true' ? '#E5BEED' : 'transparent')};
+  `,
+  Button: styled.button`
+    height: 40px;
+    width: 200px;
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+    border-radius: 10px;
+  `,
+  Paragraph: styled.p`
+    font-family: Arial, Helvetica, sans-serif;
+    width: 80%;
+    font-size: 25px;
+    color: #fff;
+    text-align: center;
   `
 }
