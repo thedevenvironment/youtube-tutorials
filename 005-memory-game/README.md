@@ -1,27 +1,30 @@
-# React + TypeScript + Vite
+# Live Coding Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Create a memory game where users have to match cards into pairs. 
 
-Currently, two official plugins are available:
+**Rules:**
+1. Users are presented with 10 pairs of matching cards (20 cards total) in random order.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. The cards are displayed for 3 seconds, then they all flip over to hide their values.
 
-## Expanding the ESLint configuration
+3. Users can turn over 2 cards at a time. 
+  a. If the cards match, they should indicate a match, and stay turned over.
+  b. If the cards don't match, they should both be flipped back over. 
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+4. The user continues this methodology until all the cards are solved.
 
-- Configure the top-level `parserOptions` property like this:
+**Tasks to complete:**
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+1. Create a metholody for the cards to be displayed to the screen with 10 matching pairs in random order. 
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Create a way for the cards to be "flipped" from front to back.
+
+3. Display the cards (face-up) for 3 seconds at the beginning and then flip them all face-down.
+
+4. Allow two cards (at most) to be flipped at a time and,
+   a. if they match, indicate a match and keep them flipped up.
+   b. if they don't match flip them back over. 
+
+5. Allow the restart button to restart the application. 
+
+**You have 30 mins**
