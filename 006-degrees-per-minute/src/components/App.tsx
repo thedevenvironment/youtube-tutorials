@@ -1,68 +1,24 @@
-import '../styles/App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import Countdown from './Countdown'
 
-interface Item {
-  name: string
-  temp: number
-  time: number
-}
-
-export function AddItem() {
-  const [name, setName] = useState('')
-  const [temp, setTemp] = useState(350)
-  const [time, setTime] = useState(10)
-
-  return (
-    <div className='modal'>
-      <input value={name} onChange={(e) => setName(e.target.value)} />
-      <input type='number' value={temp} onChange={(e) => setTemp(e.target.valueAsNumber)} />
-      <input type='number' value={time} onChange={(e) => setTime(e.target.valueAsNumber)} />
-    </div>
-  )
-}
+const TIME = 30
 
 export default function App() {
-  const [items, setItems] = useState<Item[]>([
-    { name: 'Chicken Pot Pie', temp: 350, time: 25 },
-    { name: 'Shoestring Fries', temp: 350, time: 25 }
-  ])
-  const showTable = items.length > 0
-  const showStart = items.length > 1
+  const [seconds, setSeconds] = useState(TIME)
 
-  return (
-    <>
-      <span className='title'>LE SHEF</span>
-      <span className='description'>Cook multiple frozen items in your oven at the same time.</span>
-      {showTable && (
-        <table>
-          <thead>
-            <tr>
-              <th>NAME</th>
-              <th>TEMP</th>
-              <th>TIME</th>
-            </tr>
-          </thead>
-          <tbody>
-            {items.map((item, i) => (
-              <tr key={`item-${i}`}>
-                <td>
-                  <span>{item.name}</span>
-                </td>
-                <td>
-                  <span>{`${item.temp}°F`}</span>
-                </td>
-                <td>
-                  <span>{`${item.time}min`}</span>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
-      <div id='btn-wrapper'>
-        <button id='add-btn'>ADD ITEM</button>
-        {showStart && <button id='start-btn'>START</button>}
-      </div>
-    </>
-  )
+  useEffect(() => {
+    const i = setInterval(() => {
+      setSeconds((s) => {
+        if (s > 0) return s - 1
+        clearInterval(i)
+        return 0
+      })
+    }, 1000)
+
+    return () => {
+      clearInterval(i)
+    }
+  }, [])
+
+  return <Countdown size={100} timeRemaining={seconds} totalTime={TIME} />
 }
