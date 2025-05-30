@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React + TS</title>
+    <style>
+      body {
+        background: #301a4b;
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+      #root {
+        min-height: 100lvh;
+        width: 100vw;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: stretch;
+      }
+      #page {
+        flex: 1;
+        border-width: 10px;
+        border-style: outset;
+      }
+      #menu-box {
+        border-radius: 20px;
+        background-color: goldenrod;
+        padding: 20px;
+        width: 300px;
+        align-items: stretch;
+      }
+      #triangle {
+        height: 205px;
+        width: 400px;
+      }
+      #dot-block {
+        flex-direction: row;
+        gap: 2px;
+        margin-bottom: 10px;
+      }
+      #score {
+        bottom: 0;
+      }
+      #score > span {
+        font-weight: 900;
+        color: goldenrod;
+        font-size: 30px;
+      }
+      .circle {
+        height: 10px;
+        width: 10px;
+        border: 2px solid goldenrod;
+        border-radius: 50%;
+      }
+      #key-listener {
+        height: 100vh;
+        width: 100vw;
+        position: absolute;
+        background: transparent;
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
